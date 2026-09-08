@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "全栈工程师｜半年经历：从 AI 工作方式到端到端交付",
+    "locale": "zh-CN",
+    "output": "fullstack-experience-map.html",
+    "quality_profile": "showcase",
+    "views": [
+      { "id": "story", "label": "先看主线", "focus": ["openpig", "dam_sso", "aipack", "dieline", "ua_ops", "mars_ai"], "note": "六个项目节点，呈现从 AI 工作方式到复杂项目负责的升级路径。" },
+      { "id": "matrix", "label": "再看能力矩阵", "focus": ["openpig", "aipack", "dieline", "ua_ops", "mars_ai", "user_repair", "tag_repair"], "note": "能力不是抽象标签，而是由项目结果和问题攻坚验证。" },
+      { "id": "debug", "label": "最后看攻坚证据", "focus": ["dam_sso", "user_repair", "tag_repair"], "note": "两次数据问题处理，体现定位速度、修复规模和闭环能力。" }
+    ]
+  },
+  "lanes": [
+    { "id": "story_lane", "label": "半年项目主线" },
+    { "id": "debug_lane", "label": "疑难问题攻坚", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "learn", "label": "建立 AI 工作方式", "fromCol": 0, "toCol": 1 },
+    { "id": "productize", "label": "把体验做成产品", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "own", "label": "复杂环境端到端负责", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": ["openpig", "dam_sso", "aipack", "dieline", "ua_ops", "mars_ai"],
+  "semanticChecks": {
+    "allowedRoots": ["openpig"],
+    "allowedTerminals": ["mars_ai", "tag_repair"],
+    "requiredPaths": [
+      { "from": "openpig", "to": "mars_ai" },
+      { "from": "dam_sso", "to": "tag_repair" }
+    ]
+  },
+  "nodes": [
+    { "id": "openpig", "lane": "story_lane", "col": 0, "type": "cloud", "width": 132, "label": "OpenClaw × OpenPig", "sublabel": "PC 全托管 · 飞书智能体", "tag": "AI 工作方式" },
+    { "id": "dam_sso", "lane": "story_lane", "col": 1, "type": "security", "width": 128, "label": "DAM · 上汽定制", "sublabel": "素材库 · 用户同步 · SSO", "tag": "企业集成" },
+    { "id": "aipack", "lane": "story_lane", "col": 2, "type": "backend", "width": 128, "label": "AIPACK 重构", "sublabel": "交互 · 后台 · 质量 · 效率", "tag": "反馈归零" },
+    { "id": "dieline", "lane": "story_lane", "col": 3, "type": "frontend", "width": 128, "label": "刀版图落地", "sublabel": "算法 · 3D · 印刷导出", "tag": "生产级" },
+    { "id": "ua_ops", "lane": "story_lane", "col": 4, "type": "cloud", "width": 128, "label": "UA 裸机部署", "sublabel": "Linux 环境从零搭建", "tag": "无基建交付" },
+    { "id": "mars_ai", "lane": "story_lane", "col": 5, "type": "backend", "width": 132, "label": "玛氏 PN-AI 洞察", "sublabel": "需求 · 架构 · 二开", "tag": "复杂项目负责" },
+    { "id": "user_repair", "lane": "debug_lane", "col": 2, "type": "database", "width": 128, "label": "上汽数据修复", "sublabel": "1.2W 用户 · 半天", "tag": "快速定位" },
+    { "id": "tag_repair", "lane": "debug_lane", "col": 3, "type": "database", "width": 128, "label": "DAM 标签修复", "sublabel": "280W+ 异常 · 1天", "tag": "完整治理" }
+  ],
+  "edges": [
+    { "from": "openpig", "to": "dam_sso", "role": "main", "variant": "emphasis" },
+    { "from": "dam_sso", "to": "aipack", "role": "main" },
+    { "from": "aipack", "to": "dieline", "role": "main", "variant": "emphasis" },
+    { "from": "dieline", "to": "ua_ops", "role": "main" },
+    { "from": "ua_ops", "to": "mars_ai", "role": "main", "variant": "emphasis" },
+    { "from": "dam_sso", "to": "user_repair", "label": "异常排查", "role": "branch", "variant": "security" },
+    { "from": "user_repair", "to": "tag_repair", "label": "能力复用", "role": "branch", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "能力矩阵｜AI 与产品", "items": ["AI 原生：OpenClaw 二开、OpenPig 私教式工作流", "产品化：AIPACK 交互/后台重构，客户功能负面反馈归零", "算法落地：刀版图覆盖尺寸、贴图、3D 预览、印刷导出"] },
+    { "dot": "emerald", "title": "能力矩阵｜全栈交付", "items": ["前端 + 后台 + 算法 + 企业集成 + 数据治理 + Linux 运维", "DevOps：熟悉 Tezign 流程，也能在无 OPS/CI/CD 裸机完成部署", "架构负责：从混乱需求梳理方案，快速完成项目二次开发"] },
+    { "dot": "violet", "title": "能力矩阵｜问题攻坚", "items": ["1.2W 用户数据：半天完成排查与修复", "280W+ 品牌标签异常：半天定位、1天完成完整治理", "共同方法：拆解问题 → 定位根因 → 修复数据/代码 → 验证闭环"] }
+  ]
+}
